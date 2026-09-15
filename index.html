@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RynEngine — Jeu 3D</title>
+    <link rel="icon" type="image/x-icon" href="./logo.ico">
+    <link rel="icon" type="image/svg+xml" href="./logo_white.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-CrMpCVYx.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DLYxnC2T.css">
+  </head>
+  <body>
+    <div id="game-container">
+      <!-- 1. Canvas WebGL 3D (Three.js / Shaders Zelda) -->
+      <canvas id="webgl-canvas"></canvas>
+      <canvas id="canvas2d" class="hidden"></canvas>
+
+      <!-- 2. Couche d'UI HTML Overlay du Moteur -->
+      <div id="ui-layer">
+        <!-- HUD & Prompts -->
+        <div id="hud-container">
+          <div id="interaction-prompt" class="interaction-prompt hidden">
+            <span class="prompt-key">E</span>
+            <span class="prompt-label" id="prompt-text">Interagir</span>
+          </div>
+
+          <div class="hud-top-bar">
+            <div class="hud-location" id="hud-location">RynEngine 3D World</div>
+            <div class="hud-controls-help">
+              <span><b>ZQSD / Flèches :</b> Déplacement</span>
+              <span><b>Espace :</b> Sauter</span>
+              <span><b>Shift :</b> Courir</span>
+              <span><b>E :</b> Interagir</span>
+              <span><b>P :</b> Changer de Héros</span>
+              <span><b>V / C :</b> Caméra TPS / FPS</span>
+            </div>
+          </div>
+
+          <!-- HUD Quête Active -->
+          <div id="quest-hud-container" class="quest-hud-container hidden">
+            <span id="quest-title" class="quest-title">Quête</span>
+            <span id="quest-objective" class="quest-objective">Objectif</span>
+          </div>
+
+          <div class="hud-notifications" id="hud-notifications"></div>
+        </div>
+
+        <!-- Boîte de dialogue universelle -->
+        <div id="dialogue-container" class="dialogue-container hidden">
+          <div class="dialogue-box">
+            <div class="dialogue-header">
+              <span id="dialogue-speaker" class="dialogue-speaker">Personnage</span>
+              <span id="dialogue-indicator" class="dialogue-indicator">▼</span>
+            </div>
+            <div id="dialogue-text" class="dialogue-text">...</div>
+            <div id="dialogue-choices" class="dialogue-choices"></div>
+          </div>
+        </div>
+
+        <!-- Conteneur Cutscene (Vidéo Fullscreen & Séquences Scriptées) -->
+        <div id="cutscene-container" class="cutscene-container hidden">
+          <video id="cutscene-video" class="cutscene-video hidden" playsinline></video>
+
+          <div id="cutscene-autoplay-fallback" class="cutscene-autoplay-fallback hidden">
+            <h2>Cutscene prête</h2>
+            <button id="cutscene-play-btn" class="engine-btn">Cliquer pour lancer la vidéo</button>
+          </div>
+
+          <button id="cutscene-skip-btn" class="cutscene-skip-btn">
+            <span>Passer</span>
+            <span class="cutscene-skip-key">Échap / Espace</span>
+          </button>
+
+          <div id="cutscene-text-overlay" class="cutscene-text-overlay hidden">
+            <div id="cutscene-speaker" class="cutscene-speaker"></div>
+            <div id="cutscene-message" class="cutscene-message"></div>
+          </div>
+        </div>
+
+        <!-- Écran de chargement -->
+        <div id="loading-screen" class="loading-screen">
+          <div class="loading-content">
+            <h1 class="loading-title">CHARGEMENT DU MONDE</h1>
+            <p class="loading-subtitle">Initialisation du moteur 3D et des shaders...</p>
+            <div class="progress-bar-container">
+              <div id="loading-bar" class="loading-bar"></div>
+            </div>
+            <span id="loading-text" class="loading-text">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
