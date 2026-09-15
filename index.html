@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-CrMpCVYx.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DLYxnC2T.css">
+    <script type="module" crossorigin src="./assets/index-BS1wCPjX.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BXIr74hD.css">
   </head>
   <body>
     <div id="game-container">
@@ -45,6 +45,13 @@
             <span id="quest-objective" class="quest-objective">Objectif</span>
           </div>
 
+          <!-- Sélecteur de langue HUD universel -->
+          <div id="hud-lang-cluster" class="hud-lang-cluster">
+            <button type="button" id="hud-btn-lang" class="hud-btn-lang" aria-label="Langue" title="Changer la langue (FR / EN)">
+              <span id="hud-lang-badge">FR</span>
+            </button>
+          </div>
+
           <div class="hud-notifications" id="hud-notifications"></div>
         </div>
 
@@ -53,10 +60,14 @@
           <div class="dialogue-box">
             <div class="dialogue-header">
               <span id="dialogue-speaker" class="dialogue-speaker">Personnage</span>
-              <span id="dialogue-indicator" class="dialogue-indicator">▼</span>
+              <div class="dialogue-header-actions">
+                <span id="dialogue-indicator" class="dialogue-indicator">▼</span>
+                <button type="button" id="dialogue-close-btn" class="dialogue-close-btn" aria-label="Fermer le dialogue">✕</button>
+              </div>
             </div>
             <div id="dialogue-text" class="dialogue-text">...</div>
             <div id="dialogue-choices" class="dialogue-choices"></div>
+            <div id="dialogue-tap-prompt" class="dialogue-tap-prompt">Toucher l'écran pour continuer ➔</div>
           </div>
         </div>
 
@@ -69,9 +80,9 @@
             <button id="cutscene-play-btn" class="engine-btn">Cliquer pour lancer la vidéo</button>
           </div>
 
-          <button id="cutscene-skip-btn" class="cutscene-skip-btn">
-            <span>Passer</span>
-            <span class="cutscene-skip-key">Échap / Espace</span>
+          <button id="cutscene-skip-btn" class="cutscene-skip-btn" aria-label="Passer la vidéo">
+            <span>Passer la vidéo ✕</span>
+            <span class="cutscene-skip-key">Tap / Échap</span>
           </button>
 
           <div id="cutscene-text-overlay" class="cutscene-text-overlay hidden">
